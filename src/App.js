@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Form from './Form';
+import RentAgreement from './RentAgreement';
 
-function App() {
+const App = () => {
+  const [formData, setFormData] = useState(null);
+
+  const handleFormSubmit = (data) => {
+    setFormData(data);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="flex">
+      <div className="w-1/2 p-4">
+        <Form onFormSubmit={handleFormSubmit} />
+      </div>
+      <div className="w-1/2 p-4">
+        {formData && <RentAgreement {...formData} />}
+      </div>
     </div>
   );
-}
+};
 
 export default App;
