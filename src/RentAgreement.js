@@ -96,6 +96,7 @@ const RentAgreement = ({ date, name, propertyAddress, initialPeriod }) => {
   );
 
   const downloadPdf = () => {
+    //to make pdffile we use Blob
     const blob = new Blob([MyDocument], { type: 'application/pdf' });
     const pdfUrl = URL.createObjectURL(blob);
 
